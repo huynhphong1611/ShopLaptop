@@ -106,7 +106,7 @@
                                                                           value = "${subtotal}" />₫
                                                     </td>
                                                     <td class="product-cart-icon product-subtotal text-center">
-                                                        <a href="/cart/deletefromcart?proid=${item.product.getProductID()}">
+                                                        <a href="/cart/deletefromcart?prodid=${item.product.getProductID()}" >
                                                             <i class="ti-trash"></i>
                                                         </a>
                                                     </td>
@@ -174,4 +174,35 @@
             </c:choose>
         </div>
     </body>
+    <script>
+        $(document).ready(function (proid) {
+            $("#submit-btn").click(function () {
+                event.preventDefault();
+                let prodid = ${product.getProductID()};
+                $.ajax({
+                    url: "<c:url value="/cart/deletefromcart" />",
+                    type: "get",
+                    data: {
+                        prodid: prodid
+                    },
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.Status == true) {
+                            swal("Success", "Delete from success!", "success")
+                                    .then((value) => {
+                                        location.reload();
+                                    });
+                        } else {
+                            swal("Failed", data.message, "error");
+                        }
+                    },
+                    error: function (response) {
+                        swal("Failed", "failed!", "error");
+                    }
+                });
+            });
+        });
+    </script>    
 </html>
