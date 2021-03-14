@@ -106,7 +106,7 @@
                                                                           value = "${subtotal}" />₫
                                                     </td>
                                                     <td class="product-cart-icon product-subtotal text-center">
-                                                        <a href="#">
+                                                        <a href="/cart/deletefromcart?proid=${item.product.getProductID()}">
                                                             <i class="ti-trash"></i>
                                                         </a>
                                                     </td>
