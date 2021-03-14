@@ -35,7 +35,7 @@
                         </div>
                         <div class="quick-links">
                             <ul>
-                                <li><a href="shop">Shop</a></li>
+                                <li><a href="shop">Sản phẩm</a></li>
                                 <li><a href="javascript:void(0)">Về tôi</a></li>
                                 <li><a href="javascript:void(0)">Liên hệ</a></li>
                                 <li><a href="javascript:void(0)">Hướng dẫn mua hàng online</a></li>
