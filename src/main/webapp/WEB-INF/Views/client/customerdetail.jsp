@@ -42,8 +42,8 @@
                                             </a>
                                         </h2>
 
-                                        <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Sản phẩm</h6>
-                                        <h6 class="d-block"><a href="javascript:void(0)">300</a> Đơn hàng</h6>
+                                        <h6 class="d-block"><a href="javascript:void(0)">10</a> Sản phẩm</h6>
+                                        <h6 class="d-block"><a href="javascript:void(0)">5</a> Đơn hàng</h6>
 
                                     </div>
                                 </div>
