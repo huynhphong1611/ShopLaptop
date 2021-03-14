@@ -63,7 +63,7 @@
                                 <span class="qty">SL: ${item.quantity}</span>
                             </div>
                             <div class="shopping-cart-delete">
-                                <a href="#delete" id="cart-del-btn">
+                                <a href="/cart/deletefromcart?prodid=${item.product.getProductID()}" id="cart-del-btn">
                                     <i class="icofont icofont-ui-delete"></i>
                                 </a>
                             </div>
