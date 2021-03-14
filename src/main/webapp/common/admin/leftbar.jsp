@@ -5,7 +5,7 @@
     <div class="sidebar-left-info">
         <div class="user-box">
             <div class="text-center text-white mt-2">
-                <h6>Travis Watson</h6>
+                <h6>LTNC Shop</h6>
                 <p class="text-muted m-0">Admin</p>
             </div>
         </div>

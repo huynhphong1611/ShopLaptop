@@ -7,6 +7,7 @@
         <title>Admin Home</title>
     </head>
     <body>
-        <h2>Admin Home</h2>
+        <h2>LTNC Laptop shop</h2>
+        <img src="https://vnn-imgs-a1.vgcloud.vn/image1.ictnews.vn/_Files/2019/09/20/anh-2-_-ict-news.jpg"/>
     </body>
 </html>
