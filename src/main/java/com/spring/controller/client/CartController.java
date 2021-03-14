@@ -57,7 +57,7 @@ public class CartController {
 	
 	@RequestMapping(value = "cart/deletefromcart", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView DeleteFromCart(HttpSession, int prodid){
+	ModelAndView DeleteFromCart(HttpSession session, int prodid){
 		try{
 			List<CartItem> cart = (List<CartItem>) session.getAttribute("cartlist");
 			for (int i = 0; i < cart.size(); i++){
