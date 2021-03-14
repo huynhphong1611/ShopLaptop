@@ -54,25 +54,17 @@ public class CartController {
         }
         //return list;
     }
-	
 	@RequestMapping(value = "cart/deletefromcart", method = RequestMethod.GET)
-	public @ResponseBody
-	ModelAndView DeleteFromCart(HttpSession session, int prodid){
-		try{
-			List<CartItem> cart = (List<CartItem>) session.getAttribute("cartlist");
-			for (int i = 0; i < cart.size(); i++){
-				if(cart.get(i).product.getProductID() == prodid){
-					cart.remove(i);
-					return new ModelAndView("client/cart")
-				}
-			}
-			return new ModelAndView("client/cart")
-		}
-		catch (Exception e){
-			return new ModelAndView("client/cart")
-		}
-	}
-	
+    public @ResponseBody
+    ModelAndView DeleteFromCart(HttpSession session, int prodid) {
+        try {
+            List<CartItem> cart = (List<CartItem>) session.getAttribute("cartlist");
+            for (int i = 0; i < cart.size(); i++) {
+            if (cart.get(i).product.getProductID() == prodid) {
+                cart.remove(i);
+                return new ModelAndView("client/cart");
+            }
+        }
 	
 
     private int IsExist(HttpSession session, int id) {
