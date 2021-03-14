@@ -27,7 +27,14 @@
                 </div>
             </div>
 
-
+            <div class="row">
+                <div class="input-field col-lg-2 s12">
+                    <label>Brand</label>
+                </div>
+                <div class="input-field col s12">
+                    <input readonly value="${product.getBrandID()}">
+                </div>
+            </div>
 
             <div class="row">
                 <div class="input-field col-lg-2 s12">
@@ -167,7 +174,7 @@
                                 if (response.Status) {
                                     swal("Update successfuly", "", "success")
                                             .then((value) => {
-                                                location.href ='/admin/productlist';
+                                                location.href = '/admin/productlist';
                                             });
                                 } else
                                     swal("Update fail!", "", "success");
