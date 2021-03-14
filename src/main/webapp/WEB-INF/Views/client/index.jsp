@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Trang Chủ</title>
+       
     </head>
     <body>
         <div class="blog-area pt-150 pb-110">
@@ -20,7 +21,7 @@
                             <div class="blog-hm-wrapper mb-40">
                                 <div class="blog-img">
                                     <a href="<c:url value="/product/${item.getProductURL()}/${item.getProductID()}"/>">
-                                        <img src="${item.getProductImage()}" alt="${item.getProductName()}">
+                                        <img src="${item.getProductImage()}" width="480" height="320" alt="${item.getProductName()}">
                                     </a>
                                 </div>
                                 <div class="blog-hm-content">
@@ -55,7 +56,7 @@
                             <div class="blog-hm-wrapper mb-40">
                                 <div class="blog-img">
                                     <a href="<c:url value="/product/${item.getProductURL()}/${item.getProductID()}"/>">
-                                        <img src="${item.getProductImage()}" alt="${item.getProductName()}">
+                                        <img src="${item.getProductImage()}" width="480" height="320" alt="${item.getProductName()}">
                                     </a>
                                 </div>
                                 <div class="blog-hm-content">

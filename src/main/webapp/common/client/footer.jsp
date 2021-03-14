@@ -36,9 +36,9 @@
                         <div class="quick-links">
                             <ul>
                                 <li><a href="shop">Shop</a></li>
-                                <li><a href="about">Về tôi</a></li>
-                                <li><a href="contact">Liên hệ</a></li>
-                                <li><a href="HuongDanMuaHangOnLine">Hướng dẫn mua hàng online</a></li>
+                                <li><a href="javascript:void(0)">Về tôi</a></li>
+                                <li><a href="javascript:void(0)">Liên hệ</a></li>
+                                <li><a href="javascript:void(0)">Hướng dẫn mua hàng online</a></li>
                                 <li><a href="javascript:void(0)">Chính sách bảo hành</a></li>
                                 <li><a href="javascript:void(0)">Thông tin tuyển dụng</a></li>
                                 <li><a href="javascript:void(0)">Thông tin khuyến mãi</a></li>
@@ -110,7 +110,7 @@
                                     <span>Facebook</span>
                                 </div>
                                 <div class="food-info-content">
-                                    <a href="https://www.facebook.com/LTNC/">https://www.facebook.com/LTNCShop/</a>
+                                    <a href=https://www.facebook.com/groups/1572249286296292>https://www.facebook.com/LTNCShop/</a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
             <div class="row">
                 <div class="col-md-8 col-12">
                     <div class="copyright">
-                        <p>&copy;  All rights reserved 2020 - Copyright by HHQ.com</p>
+                        <p>&copy;  All rights reserved 2021 - Copyright by Nhom 1 (Huynh-Viet-Tuan) LTNC</p>
                     </div>
                 </div>
             </div>
