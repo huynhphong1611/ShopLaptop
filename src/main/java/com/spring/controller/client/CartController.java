@@ -54,7 +54,7 @@ public class CartController {
         }
         //return list;
     }
-	@RequestMapping(value = "cart/deletefromcart", method = RequestMethod.GET)
+    @RequestMapping(value = "cart/deletefromcart", method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView DeleteFromCart(HttpSession session, int prodid) {
         try {
@@ -65,6 +65,11 @@ public class CartController {
                 return new ModelAndView("client/cart");
             }
         }
+        } catch (Exception e) {
+            return new ModelAndView("client/cart");
+        }
+        return new ModelAndView("client/cart");
+    }
 	
 
     private int IsExist(HttpSession session, int id) {
