@@ -163,7 +163,35 @@ public class ProductDAO {
             return null;
         }
     }
+public List<Product> GetProdByName(String dname) {
+        Connection conn = DbContext.getConnection();
+        try {
+            List<Product> list = new ArrayList<>();
+            String query = "SELECT * FROM PRODUCT WHERE PRODUCT.ProductName like '%?%'";
+            
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, dname);
+            ResultSet rs = st.executeQuery();
 
+            while (rs.next()) {
+                int id = rs.getInt("ProductID");
+                String name = rs.getString("ProductName");
+                String desc = rs.getString("ProductDescription");
+                BigDecimal price = rs.getBigDecimal("ProductPrice");
+                BigDecimal promoprice = rs.getBigDecimal("PromotionPrice");
+                String img = rs.getString("ProductImage");
+                String url = rs.getString("ProductURL");
+                int brandid = rs.getInt("BrandID");
+                Date createddate = rs.getDate("CreatedDate");
+
+                list.add(new Product(id, name, desc, price, promoprice, img, url, brandid, createddate));
+            }
+            return list;
+
+        } catch (SQLException e) {
+            return null;
+        }
+    }
     public List<Product> GetData(int offset, int max) {
         Connection conn = DbContext.getConnection();
         try {

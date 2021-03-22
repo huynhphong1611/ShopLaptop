@@ -53,4 +53,13 @@ public class ProductController {
 
         return new ModelAndView("client/productdetail", "product", productdao.GetDataByID(id));
     }
+    
+    @RequestMapping(value = "/searchresult/{searchTerm}", method = RequestMethod.GET)
+    public ModelAndView Search(@PathVariable("searchTerm") String pSearchTerm) {
+        ModelAndView mv = new ModelAndView("client/searchresult");
+
+        mv.addObject("searchTerm", pSearchTerm);
+        mv.addObject("searchResult", productdao.GetProdByName(pSearchTerm));
+        return mv;
+    }
 }
