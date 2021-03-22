@@ -66,7 +66,7 @@ public class ProductController {
         productlist = new PagedListHolder<>();
         List<Product> productList = productdao.GetProdByName(search);
         productlist.setSource(productList);
-        productlist.setPageSize(pageSize);
+        productlist.setPageSize(productList.size());
         req.getSession().setAttribute("productlist", productlist);
 
         return mv;
