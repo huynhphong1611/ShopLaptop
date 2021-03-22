@@ -6,6 +6,7 @@ import com.spring.entity.Product;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -167,10 +168,9 @@ public List<Product> GetProdByName(String dname) {
         Connection conn = DbContext.getConnection();
         try {
             List<Product> list = new ArrayList<>();
-            String query = "SELECT * FROM PRODUCT WHERE PRODUCT.ProductName like '%?%'";
+            String query = "SELECT * FROM PRODUCT WHERE PRODUCT.ProductName like N'%"+dname+"%'";
             
             PreparedStatement st = conn.prepareStatement(query);
-            st.setString(1, dname);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
@@ -308,4 +308,11 @@ public List<Product> GetProdByName(String dname) {
             return false;
         }
     }
+    public static void main(String[] args) throws SQLException {
+        List<Product> a = new ProductDAO().GetProdByName("Lenovo");
+        for (Product i: a){
+            System.out.println(i.getProductID()+ " " + i.getProductName());
+        }
+    }
+    
 }

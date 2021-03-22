@@ -39,7 +39,7 @@
                             <div class="sidebar-widget pb-55">
                                 <h3 class="sidebar-widget">Tìm kiếm</h3>
                                 <div class="sidebar-search">
-                                    <form action="shop/searchresult" method="get">
+                                    <form action="searchresult" method="get">
                                         <input class="search-box" type="text" placeholder="Tìm kiếm..." name="search" id="search-product">
                                         <button type="submit"><i class="ti-search"></i></button>
                                     </form>

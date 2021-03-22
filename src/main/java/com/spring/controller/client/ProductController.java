@@ -3,15 +3,19 @@ package com.spring.controller.client;
 import com.google.gson.Gson;
 import com.spring.dao.ProductDAO;
 import com.spring.entity.Product;
+import java.util.ArrayList;
 import java.util.List;
+import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,12 +58,29 @@ public class ProductController {
         return new ModelAndView("client/productdetail", "product", productdao.GetDataByID(id));
     }
     
-    @RequestMapping(value = "/searchresult/{searchTerm}", method = RequestMethod.GET)
-    public ModelAndView Search(@PathVariable("searchTerm") String pSearchTerm) {
+    @RequestMapping("/shop/searchresult")
+    public ModelAndView search(@RequestParam("search") String search, HttpServletRequest req, HttpServletResponse res) {
+        int pageSize = 6;
         ModelAndView mv = new ModelAndView("client/searchresult");
+        PagedListHolder<Product> productlist;
+        productlist = new PagedListHolder<>();
+        List<Product> productList = productdao.GetProdByName(search);
+        productlist.setSource(productList);
+        productlist.setPageSize(pageSize);
+        req.getSession().setAttribute("productlist", productlist);
 
-        mv.addObject("searchTerm", pSearchTerm);
-        mv.addObject("searchResult", productdao.GetProdByName(pSearchTerm));
         return mv;
     }
+    
+//    @RequestMapping("/shop/searchresult")    
+//        public String search(Model m, @RequestParam("search") String search){
+//            List<Product> productlist = productdao.GetProdByName(search);
+//            m.addAttribute("productlist", search);  
+//            return "/client/searchresult";
+//        }
+    @RequestMapping("/shop/hello")    
+        public String editnhanvien(Model m, @RequestParam("search") String search){
+            m.addAttribute("search", search);  
+            return "/client/hello";
+        }
 }
