@@ -230,6 +230,7 @@ public class OrderDAO {
             return -1;
         }
     }
+   
 
     public List<OrderStatus> StatusList() {
         Connection conn = DbContext.getConnection();
@@ -271,5 +272,76 @@ public class OrderDAO {
             e.printStackTrace();
             return -1;
         }
+    }
+    
+    public List<Integer> OrderSucces(int month, int year){
+        Connection conn = DbContext.getConnection();
+        List<Integer> a = new ArrayList<Integer>();
+        try{
+            String query = "SELECT sum(Total) as tong, count(Total) as soLuong FROM [ORDER] INNER\n" +
+            "JOIN ORDERSTATUS ON [ORDER].OrderStatusID = ORDERSTATUS.StatusID \n" +
+            "WHERE ORDERSTATUS.StatusName = N'Đã giao hàng' AND MONTH(OrderDate) = "+ month+" \n" +
+            "AND YEAR(OrderDate) = " + year;
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                a.add(rs.getInt("soLuong"));
+                a.add(rs.getInt("tong"));
+            }
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return a;
+    }
+    
+    public int OrderUnSucces(int month, int year){
+        Connection conn = DbContext.getConnection();
+        try{
+            String query = "SELECT * FROM [ORDER] INNER\n" +
+                "JOIN ORDERSTATUS ON [ORDER].OrderStatusID = ORDERSTATUS.StatusID \n" +
+                "WHERE MONTH(OrderDate) = "+month+" AND YEAR(OrderDate) = "+year+" \n" +
+                "AND (ORDERSTATUS.StatusName = N'Hàng có lỗi' \n" +
+                "OR ORDERSTATUS.StatusName = N'Đã hủy')";
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                return rs.getInt("soluong");
+            }
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return -1;
+        }
+        return 0;
+    }
+    public int OrderInMonth(int month, int year){
+        Connection conn = DbContext.getConnection();
+        try{
+            String query = "SELECT count(Total) as soLuong FROM [ORDER] INNER\n" +
+                "JOIN ORDERSTATUS ON [ORDER].OrderStatusID = ORDERSTATUS.StatusID "
+                    + "WHERE MONTH(OrderDate) = "+month+ " AND YEAR(OrderDate) = " + year;
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                return rs.getInt("soluong");
+            }
+            
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return -1;
+        }
+        return 0;
+    }
+    public static void main(String[] args) throws SQLException {
+        List<Integer> a = new OrderDAO().OrderSucces(3,2021);
+        for(Integer i: a){
+            System.out.println(i);
+        }
+        System.out.println(new OrderDAO().OrderInMonth(2,2021));
+        System.out.println(new OrderDAO().OrderUnSucces(2,2021));
     }
 }

@@ -3,7 +3,7 @@
 
 <c:forEach var="item" items="${menu}">
     <li>
-        <a href="<c:url value=""/>">
+        <a href="<c:url value="/shop/searchresult?search=${item.getBrandName()}"/>">
             ${item.getBrandName()}
         </a>
     </li>

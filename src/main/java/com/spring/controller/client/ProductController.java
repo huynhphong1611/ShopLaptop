@@ -27,7 +27,7 @@ public class ProductController {
     
     @RequestMapping(value = {"shop", "shop/{page}"}, method = RequestMethod.GET)
     public ModelAndView Shop(@PathVariable(required = false, name = "page") String page, HttpServletRequest req, HttpServletResponse res) {
-        int pageSize = 6;
+        int pageSize = 8;
 
         ModelAndView mv = new ModelAndView("client/shop");
         PagedListHolder<Product> productlist;
@@ -60,7 +60,7 @@ public class ProductController {
     
     @RequestMapping("/shop/searchresult")
     public ModelAndView search(@RequestParam("search") String search, HttpServletRequest req, HttpServletResponse res) {
-        int pageSize = 6;
+        ///int pageSize = 6;
         ModelAndView mv = new ModelAndView("client/searchresult");
         PagedListHolder<Product> productlist;
         productlist = new PagedListHolder<>();
@@ -68,7 +68,6 @@ public class ProductController {
         productlist.setSource(productList);
         productlist.setPageSize(productList.size());
         req.getSession().setAttribute("productlist", productlist);
-
         return mv;
     }
     

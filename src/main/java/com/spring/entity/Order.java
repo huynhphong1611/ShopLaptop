@@ -2,6 +2,7 @@ package com.spring.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.List;
 
 public class Order {
 
@@ -111,6 +112,14 @@ public class Order {
 
     public void setStatusName(String StatusName) {
         this.StatusName = StatusName;
+    }
+
+    public List<Integer> OrderSucces() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean OrderUnSucces() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

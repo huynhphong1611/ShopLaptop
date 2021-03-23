@@ -41,10 +41,6 @@
                                             <a href="javascript:void(0);">${sessionScope.customerLogin.getCustomerName()}
                                             </a>
                                         </h2>
-
-                                        <h6 class="d-block"><a href="javascript:void(0)">10</a> Sản phẩm</h6>
-                                        <h6 class="d-block"><a href="javascript:void(0)">5</a> Đơn hàng</h6>
-
                                     </div>
                                 </div>
                             </div>
@@ -121,10 +117,9 @@
                                                             <td class="text-center">
                                                                 <c:choose>
                                                                     <c:when test="${item.getOrderStatusID() == 1}">
-                                                                        <button class="btn btn-danger" id="@item.OrderID"
-                                                                                onclick="return CancelOrder('@item.OrderID')">
+                                                                        <a class="btn btn-danger" href="profile/cancelorder/${item.getOrderID()}">
                                                                             Hủy đơn hàng
-                                                                        </button>
+                                                                        </a>
                                                                     </c:when>
                                                                 </c:choose>
                                                             </td>
@@ -159,7 +154,7 @@
                                                     <label style="font-weight:bold;">Số điện thoại</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    ${sessionScope.customerLogin.getCustomerName()}
+                                                    ${sessionScope.customerLogin.getCustomerPhone()}
                                                 </div>
                                             </div>
 
@@ -168,18 +163,10 @@
                                                     <label style="font-weight:bold;">Email</label>
                                                 </div>
                                                 <div class="col-md-8 col-6">
-                                                    ${sessionScope.customerLogin.getCustomeEmail()}
+                                                    ${sessionScope.customerLogin.getCustomerEmail()}
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Số điện thoại</label>
-                                                </div>
-                                                <div class="col-md-8 col-6">
-                                                    ${sessionScope.customerLogin.getCustomerPhone()}
-                                                </div>
-                                            </div>
 
                                             <div class="row">
                                                 <div class="col-sm-3 col-md-2 col-5">
@@ -199,14 +186,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-sm-3 col-md-2 col-5">
-                                                    <label style="font-weight:bold;">Ngày tạo tài khoản</label>
-                                                </div>
-                                                <div class="col-md-8 col-6">
-                                                    ${sessionScope.customerLogin.getCreatedDate()}
-                                                </div>
-                                            </div>
 
                                         </div>
 
@@ -222,40 +201,7 @@
             </div>
         </div>
 
-        <script>
-            $(document).ready(function () {
-//            $.get("@Url.Action("GetStatus", "Order")",
-//                    function (data) {
-//                    var select = $("#status-select");
-//                    for (i = 0; i < data.length; i++) {
-//                    select.append(`<option value="${data[i].StatusID}">${data[i].StatusName}</option>`);
-//                    };
-//                    }
-//            );
-//            $('#status-select').on('change', function () {
-//            $.get("@Url.Action("OrderList", "Order")",
-//            {
-//            "StatusID": this.value
-//            },
-//                    function (data) {
-//                    $("#order-details-partial").empty();
-//                    $("#order-details-partial").append(data);
-//                    $("#loader").hide();
-//                    }
-//            );
-//            });
-//            $.get("@Url.Action("OrderList", "Order", new { Area = "" })",
-//            {
-//            "StatusID": 0
-//            },
-//                    function (data) {
-//                    $("#order-details-partial").append(data);
-//                    $("#loader").hide();
-//                    }
-//            );
-            });
-        </script>
-
+ 
         <script>
             function CancelOrder(id) {
                 swal({
@@ -267,8 +213,11 @@
                     if (willDelete) {
                         $.ajax({
                             type: "post",
-                            url: `@Url.Action("CancelOrder", "Order")`,
-                            data: "OrderID=" + id,
+                            url: `@Url.Action("EditOrder", "Ordered")`,
+                            data: {
+                                   "Orderid": id,
+                                   "StatusID": 5
+                            },
                             success: function (response) {
                                 if (response.Status == true) {
                                     swal("Cancel success", "", "success")

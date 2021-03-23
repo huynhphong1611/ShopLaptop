@@ -26,6 +26,9 @@ public class CustomerDAO {
                 customer.setCustomerID(rs.getInt("CustomerID"));
                 customer.setCustomerUsername(username);
                 customer.setCustomerName(rs.getString("CustomerName"));
+                customer.setCustomerAddress(rs.getString("CustomerAddress"));
+                customer.setCustomerPhone(rs.getString("CustomerPhone"));
+                customer.setCustomerEmail(rs.getString("CustomerEmail"));
             }
 
             return customer;
@@ -94,7 +97,7 @@ public class CustomerDAO {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, model.getCustomerUsername());
             statement.setString(2, CommonFunction.StringToMD5(model.getCustomerPassword()));
-            statement.setString(3, model.getCustomeEmail());
+            statement.setString(3, model.getCustomerEmail());
             statement.setString(4, model.getCustomerName());
             statement.setString(5, model.getCustomerPhone());
             statement.setString(6, model.getCustomerAddress());

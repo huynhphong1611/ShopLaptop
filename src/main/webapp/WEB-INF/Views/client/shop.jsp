@@ -49,7 +49,7 @@
                                 <h3 class="sidebar-widget">Lọc theo hãng</h3>
                                 <div class="widget-categories">
                                     <ul id="category-content">
-                                        <li><a href="#">Tất cả</a></li>
+                                        <li><a href="/shop">Tất cả</a></li>
                                             <%@ include file="/common/client/partialview/navbrand.jsp" %>
                                     </ul>
                                 </div>

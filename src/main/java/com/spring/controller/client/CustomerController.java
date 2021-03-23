@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,6 +40,13 @@ public class CustomerController {
         List<Order> orderlist = orderdao.LoadOrder(customer.getCustomerID());
 
         return new ModelAndView("client/customerdetail", "orderlist", orderlist);
+    }
+    
+    @RequestMapping(value = "profile/cancelorder/{orderid}", method = RequestMethod.GET)
+    public String CancelOrder(@PathVariable(required = true, name = "orderid") int orderid) {
+        int result = orderdao.EditOrder(orderid, 5);
+        
+        return "redirect:/profile";
     }
 
     @RequestMapping(value = "customer/vaidate", method = RequestMethod.GET)

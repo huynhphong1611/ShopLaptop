@@ -56,9 +56,9 @@
                 </a>
             </li>
             <li class="">
-                <a href="#" title="Customer">
-                    <i class="mdi mdi-account">
-                    </i> <span>Customer</span>
+                <a href="/admin/report?thang=3&nam=2021" title="Statistic">
+                    <i class="mdi mdi-graph-up">
+                    </i> <span>Statistic</span>
                 </a>
                 <ul class="child-list">
                     <li>

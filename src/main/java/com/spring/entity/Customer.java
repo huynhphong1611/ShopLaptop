@@ -7,7 +7,7 @@ public class Customer {
     private int CustomerID;
     private String CustomerUsername;
     private String CustomerPassword;
-    private String CustomeEmail;
+    private String CustomerEmail;
     private String CustomerName;
     private String CustomerPhone;
     private String CustomerAddress;
@@ -25,8 +25,8 @@ public class Customer {
         return CustomerPassword;
     }
 
-    public String getCustomeEmail() {
-        return CustomeEmail;
+    public String getCustomerEmail() {
+        return CustomerEmail;
     }
 
     public String getCustomerName() {
@@ -57,8 +57,8 @@ public class Customer {
         this.CustomerPassword = CustomerPassword;
     }
 
-    public void setCustomeEmail(String CustomeEmail) {
-        this.CustomeEmail = CustomeEmail;
+    public void setCustomerEmail(String CustomeEmail) {
+        this.CustomerEmail = CustomeEmail;
     }
 
     public void setCustomerName(String CustomerName) {

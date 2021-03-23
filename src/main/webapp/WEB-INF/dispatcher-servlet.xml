@@ -29,6 +29,6 @@ and open the template in the editor.
     <mvc:interceptors>
         <bean class="com.spring.interceptor.MenuHandlerInterceptor"></bean>
     </mvc:interceptors>
-
+    
     <mvc:annotation-driven />
 </beans>

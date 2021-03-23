@@ -46,25 +46,25 @@
                                     <div class="col-md-12">
                                         <div class="checkout-form-list">
                                             <label>Họ tên<span class="required">*</span></label>
-                                            <input type="text" placeholder="Họ tên..." name="customer-fullname" id="customer-fullname" />
+                                            <input type="text" value="${sessionScope.customerLogin.getCustomerName()}" placeholder="Họ tên..." name="customer-fullname" id="customer-fullname" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="checkout-form-list">
                                             <label>Địa chỉ <span class="required">*</span></label>
-                                            <input type="text" placeholder="Địa chỉ..." name="customer-address" id="customer-address" />
+                                            <input type="text" placeholder="Địa chỉ..." name="customer-address" value ="${sessionScope.customerLogin.getCustomerAddress()}" id="customer-address" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="checkout-form-list">
                                             <label>Điện thoại  <span class="required">*</span></label>
-                                            <input type="tel" placeholder="Điện thoại..." name="customer-phone" id="customer-phone" />
+                                            <input type="tel" placeholder="Điện thoại..." name="customer-phone" value="${sessionScope.customerLogin.getCustomerPhone()}" id="customer-phone" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="checkout-form-list">
                                             <label>Email</label>
-                                            <input type="email" placeholder="Email..." name="customer-email" id="customer-email" />
+                                            <input type="email" placeholder="Email..." value="${sessionScope.customerLogin.getCustomerEmail()}" name="customer-email" id="customer-email" />
                                         </div>
                                     </div>
                                 </div>
