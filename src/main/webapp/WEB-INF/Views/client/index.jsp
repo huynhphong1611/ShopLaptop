@@ -7,11 +7,18 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Trang Chủ</title>
-       
+
     </head>
     <body>
         <div class="blog-area pt-150 pb-110">
             <div class="container">
+                <div class="sidebar-search" style="padding-bottom: 20px">
+                    <h3 class="sidebar-widget" style="text-align: center; font-size: 30px">Tìm kiếm</h3>
+                    <form action="shop/searchresult" method="get">
+                        <input class="search-box" type="text" placeholder="Tìm kiếm..." name="search" id="search-product">
+                        <button type="submit"><i class="ti-search"></i></button>
+                    </form>
+                </div>
                 <div class="section-title text-center mb-60">
                     <h2 style="font-size:70px;">Được Xem Nhiều</h2>
                 </div>
