@@ -308,10 +308,36 @@ public List<Product> GetProdByName(String dname) {
             return false;
         }
     }
+    public List<Integer> Top3ProductOfMonth(int month, int year){
+        Connection conn = DbContext.getConnection();
+        List a = new ArrayList<Integer>();
+        try{
+            String query = "select TOP (3) PRODUCT.ProductID,Sum(Quantity) as soLuongBan \n" +
+                "from PRODUCT INNER JOIN ORDERDETAIL ON PRODUCT.ProductID = ORDERDETAIL.ProductID\n" +
+                "INNER JOIN [ORDER] ON [ORDER].OrderID = ORDERDETAIL.OrderID INNER JOIN ORDERSTATUS ON \n" +
+                "[ORDER].OrderStatusID = ORDERSTATUS.StatusID WHERE MONTH(OrderDate) = "+month+" \n" +
+                "AND YEAR(OrderDate) = "+year+" Group by Product.ProductID ORDER BY soLuongBan Desc";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                a.add(rs.getInt("ProductID"));
+                a.add(rs.getInt("soLuongBan"));
+            }
+        }
+        catch(Exception e){
+            a.add(1);
+            a.add(-1);
+        }
+        return a;
+    }
     public static void main(String[] args) throws SQLException {
-        List<Product> a = new ProductDAO().GetProdByName("Lenovo");
-        for (Product i: a){
-            System.out.println(i.getProductID()+ " " + i.getProductName());
+        List<Product> b = new ArrayList<Product>();
+        List<Integer> top3product = new ProductDAO().Top3ProductOfMonth(3,2021);
+        List qualityTop3Product = new ArrayList<Integer>();
+        for (int i = 1;i < top3product.size(); i += 2){
+            qualityTop3Product.add(top3product.get(i));
+            b.add(new ProductDAO().GetDataByID(top3product.get(i - 1)));
         }
     }
     

@@ -59,6 +59,70 @@
                 </table>
             </div>
         </div>
+        <br/>
+        <br/>
+        <center><h1>Các sản phẩm bán chạy nhất tháng tháng ${thang} năm ${nam}</h1></center>
+        <div class="card-body">
+            
+
+            <table class="table table-bordered" id="product-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Top
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th class="text-center">
+                            Name
+                        </th>
+                        <th class="text-center">
+                            Price
+                        </th>
+
+                        <th class="text-center">
+                            CreatedDate
+                        </th>
+                        <th class="text-center">
+                            Số lượng bán trong tháng
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="item" items="${orderlist}">
+
+                        <tr>
+                            <td>
+                                ${orderlist.indexOf(item) + 1}
+                            </td>
+                            <td>
+                                <img src="${item.getProductImage()}" style="max-height: 50px;" />
+                            </td>
+                            <td class="text-center">
+                                ${item.getProductName()}
+                            </td>
+                            <td class="text-center">
+                                ${item.getProductPrice()}
+                            </td>
+                            <td class="text-center">
+                                ${item.getCreatedDate()}
+                            </td>
+                            <td>
+                                <center>
+                                ${qualityProduct.get(orderlist.indexOf(item))}
+                                </center>
+                            </td>
+
+                        </tr>
+
+                    </c:forEach>
+
+                </tbody>
+            </table>
+
+
+        </div>
 
         <script src="/assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="/assets/admin/plugins/datatables/dataTables.bootstrap4.min.js"></script>

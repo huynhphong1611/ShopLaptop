@@ -1,6 +1,9 @@
 package com.spring.controller.admin;
 
 import com.spring.dao.OrderDAO;
+import com.spring.dao.ProductDAO;
+import com.spring.entity.Product;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,15 @@ public class HomeController {
                 m.addAttribute("thang", 3);
                 m.addAttribute("nam", 2021);
                 List<Integer> a = new OrderDAO().OrderSucces(3,2021);
+                List<Product> b = new ArrayList<Product>();
+                List<Integer> top3product = new ProductDAO().Top3ProductOfMonth(3,2021);
+                List qualityTop3Product = new ArrayList<Integer>();
+                for (int i = 1;i < top3product.size(); i += 2){
+                    qualityTop3Product.add(top3product.get(i));
+                    b.add(new ProductDAO().GetDataByID(top3product.get(i - 1)));
+                }
+                m.addAttribute("orderlist", b);
+                m.addAttribute("qualityProduct", qualityTop3Product);
                 m.addAttribute("soluongsucces", String.valueOf(a.get(0)));
                 m.addAttribute("total", String.valueOf(a.get(1)));
                 m.addAttribute("soluongfail", String.valueOf(new OrderDAO().OrderUnSucces(3,2021)));
@@ -34,6 +46,15 @@ public class HomeController {
             m.addAttribute("thang", thang);
             m.addAttribute("nam", nam);
             List<Integer> a = new OrderDAO().OrderSucces(thang,nam);
+            List<Product> b = new ArrayList<Product>();
+            List<Integer> top3product = new ProductDAO().Top3ProductOfMonth(3,2021);
+            List qualityTop3Product = new ArrayList<Integer>();
+            for (int i = 1;i < top3product.size(); i += 2){
+                qualityTop3Product.add(top3product.get(i));
+                b.add(new ProductDAO().GetDataByID(top3product.get(i - 1)));
+            }
+            m.addAttribute("orderlist", b);
+            m.addAttribute("qualityProduct", qualityTop3Product);
             m.addAttribute("soluongsucces", String.valueOf(a.get(0)));
             m.addAttribute("total", String.valueOf(a.get(1)));
             m.addAttribute("soluongfail", String.valueOf(new OrderDAO().OrderUnSucces(thang,nam)));

@@ -299,7 +299,7 @@ public class OrderDAO {
     public int OrderUnSucces(int month, int year){
         Connection conn = DbContext.getConnection();
         try{
-            String query = "SELECT * FROM [ORDER] INNER\n" +
+            String query = "SELECT count(Total) as soLuong FROM [ORDER] INNER\n" +
                 "JOIN ORDERSTATUS ON [ORDER].OrderStatusID = ORDERSTATUS.StatusID \n" +
                 "WHERE MONTH(OrderDate) = "+month+" AND YEAR(OrderDate) = "+year+" \n" +
                 "AND (ORDERSTATUS.StatusName = N'Hàng có lỗi' \n" +
@@ -341,7 +341,7 @@ public class OrderDAO {
         for(Integer i: a){
             System.out.println(i);
         }
-        System.out.println(new OrderDAO().OrderInMonth(2,2021));
-        System.out.println(new OrderDAO().OrderUnSucces(2,2021));
+        System.out.println(new OrderDAO().OrderInMonth(3,2021));
+        System.out.println(new OrderDAO().OrderUnSucces(3,2021));
     }
 }
